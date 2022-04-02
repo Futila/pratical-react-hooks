@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 function App() {
   const [techs, setTechs] = useState([]);
@@ -20,6 +20,8 @@ function App() {
     setTechs([...techs, 'NodeJs']);
     setNewTech('');
   }
+
+  const techsSize = useMemo(() => techs.length, [techs]);
   return (
     <>
       <ul>
@@ -27,6 +29,7 @@ function App() {
           <li key={tech}>{tech}</li>
         ))}
       </ul>
+      <strong>você tem {techsSize} tecnologia(as) </strong>
       <input
         type="text"
         value={newTech}
